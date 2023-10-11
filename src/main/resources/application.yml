@@ -1,0 +1,28 @@
+server:
+  port: 9090
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher  #解决swagger与spring boot版本不兼容
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/management-system?serverTimezone=GMT%2b8
+    username: root
+    password: 1234
+#mybatis:
+  #mapper-locations: classpath:mapper/*.xml
+  #configuration:
+  #  log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.CompositeEnumTypeHandler
+  #输出没有mp标志
+  global-config:
+    db-config:
+      table-prefix: tbl_
+      #逻辑删除操作
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
